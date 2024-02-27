@@ -17,8 +17,6 @@ Please support the original RVC. This inference won't be possible to make withou
 - Microphone Support ✅
 - TTS Support ✅
 - Model Downloader ✅
-- Batch Inference ✅
-- downloading model and rmvpe now with  .py file ✅
 
 
 
@@ -29,12 +27,13 @@ Please support the original RVC. This inference won't be possible to make withou
 pip install torch torchvision torchaudio
 
 pip install -r requirements.txt
+
+
+python tools/Download_models.py
+
 ```
 2. Install [ffmpeg](https://ffmpeg.org/)
 
-3. Download [Hubert Model](https://huggingface.co/lj1995/VoiceConversionWebUI/blob/main/hubert_base.pt)
-
-4. [OPTIONAL] To use rmvpe pitch extraction, download this [rvmpe.pt](https://huggingface.co/lj1995/VoiceConversionWebUI/blob/main/rmvpe.pt)
 
 ### Run WebUI <br />
 
