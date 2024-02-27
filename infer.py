@@ -402,7 +402,7 @@ def cut_vocal_and_inst_yt(split_model):
         yield "\n".join(logs), None, None, None
     print(result.stdout)
     vocal = f"output/{split_model}/audio/vocals.wav"
-    inst = f"output/{split_model}/audio/instrumental.wav"
+    inst = f"output/{split_model}/audio/no_vocals.wav"
     logs.append("Audio splitting complete.")
     yield "\n".join(logs), vocal, inst, vocal
 
@@ -838,7 +838,25 @@ with gr.Blocks(theme="Hev832/EasyAndCool", title="RVC") as app:
             ]
         )
         sid.change(fn=get_vc, inputs=[sid, protect0], outputs=[spk_item, protect0, file_index, selected_model])
-    with gr.TabItem("Batch Inference"):
+      
+    with gr.TabItem("Model Downloader"):
+        gr.Markdown(
+            "# <center> Model Downloader (Beta)\n"+
+            "#### <center> To download multi link you have to put your link to the textbox and every link separated by space\n"+
+            "#### <center> Support Direct Link, Mega, Google Drive, etc"
+        )
+        with gr.Column():
+            md_text = gr.Textbox(label="URL")
+        with gr.Row():
+            md_download = gr.Button(label="Convert", variant="primary")
+            md_download_logs = gr.Textbox(label="Output information", interactive=False)
+            md_download.click(
+                fn=download_and_extract_models,
+                inputs=[md_text],
+                outputs=[md_download_logs]
+        )
+            
+        with gr.TabItem("Batch Inference"):
         with gr.Row():
             with gr.Column():
                 vc_input_bat = gr.Textbox(label="Input audio path (folder)", visible=True)
@@ -853,7 +871,7 @@ with gr.Blocks(theme="Hev832/EasyAndCool", title="RVC") as app:
                     label="Pitch extraction algorithm",
                     info=f0method_info,
                     choices=f0method_mode,
-                    value="pm",
+                    value="rmvpe",
                     interactive=True,
                 )
                 index_rate0_bat = gr.Slider(
@@ -918,20 +936,5 @@ with gr.Blocks(theme="Hev832/EasyAndCool", title="RVC") as app:
             ],
             [vc_log_bat],
         )
-    with gr.TabItem("Model Downloader"):
-        gr.Markdown(
-            "# <center> Model Downloader (Beta)\n"+
-            "#### <center> To download multi link you have to put your link to the textbox and every link separated by space\n"+
-            "#### <center> Support Direct Link, Mega, Google Drive, etc"
-        )
-        with gr.Column():
-            md_text = gr.Textbox(label="URL")
-        with gr.Row():
-            md_download = gr.Button(label="Convert", variant="primary")
-            md_download_logs = gr.Textbox(label="Output information", interactive=False)
-            md_download.click(
-                fn=download_and_extract_models,
-                inputs=[md_text],
-                outputs=[md_download_logs]
-        )
+        
     app.queue(concurrency_count=1, max_size=50, api_open=config.api).launch(share=config.colab)
