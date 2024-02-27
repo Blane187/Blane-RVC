@@ -622,8 +622,9 @@ def change_audio_mode(vc_audio_mode):
         
 with gr.Blocks() as app:
     gr.Markdown(
-        "# <center> Advanced RVC Inference\n"
+        "# <center> Blane RVC 💻 \n"
     )
+with gr.TabItem("select models")
     with gr.Row():
         sid = gr.Dropdown(
             label="Weight",
@@ -934,9 +935,5 @@ with gr.Blocks() as app:
                 inputs=[md_text],
                 outputs=[md_download_logs]
             )
-    with gr.TabItem("Settings"):
-        gr.Markdown(
-            "# <center> Settings\n"+
-            "#### <center> Work in progress"
-        )
+            
     app.queue(concurrency_count=1, max_size=50, api_open=config.api).launch(share=config.colab)
