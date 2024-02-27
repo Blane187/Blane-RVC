@@ -36,12 +36,12 @@ voices = [f"{v['ShortName']}-{v['Gender']}" for v in tts_voice_list]
 
 hubert_model = None
 
-f0method_mode = ["pm", "harvest", "crepe"]
-f0method_info = "PM is fast, Harvest is good but extremely slow, and Crepe effect is good but requires GPU (Default: PM)"
+f0method_mode = ["dio", "crepe"]
+f0method_info = " Crepe effect is good but requires GPU (Default: dio)"
 
 if os.path.isfile("rmvpe.pt"):
     f0method_mode.insert(2, "rmvpe")
-    f0method_info = "PM is fast, Harvest is good but extremely slow, Rvmpe is alternative to harvest (might be better), and Crepe effect is good but requires GPU (Default: PM)"
+    f0method_info = "Rvmpe is alternative to harvest (might be better), and Crepe effect is good but requires GPU (Default: dio)"
 
 def load_hubert():
     global hubert_model
@@ -402,7 +402,7 @@ def cut_vocal_and_inst_yt(split_model):
         yield "\n".join(logs), None, None, None
     print(result.stdout)
     vocal = f"output/{split_model}/audio/vocals.wav"
-    inst = f"output/{split_model}/audio/no_vocals.wav"
+    inst = f"output/{split_model}/audio/instrumental.wav"
     logs.append("Audio splitting complete.")
     yield "\n".join(logs), vocal, inst, vocal
 
@@ -685,7 +685,7 @@ with gr.Blocks(theme="Hev832/EasyAndCool", title="RVC") as app:
                     label="Pitch extraction algorithm",
                     info=f0method_info,
                     choices=f0method_mode,
-                    value="pm",
+                    value="dio",
                     interactive=True,
                 )
                 index_rate0 = gr.Slider(
