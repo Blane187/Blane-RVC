@@ -624,7 +624,7 @@ with gr.Blocks() as app:
     gr.Markdown(
         "# <center> Blane RVC 💻 \n"
     )
-with gr.TabItem("select models")
+with gr.TabItem("select models"):
     with gr.Row():
         sid = gr.Dropdown(
             label="Weight",
