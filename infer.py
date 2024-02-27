@@ -620,7 +620,7 @@ def change_audio_mode(vc_audio_mode):
             gr.Dropdown.update(visible=True)
         )
         
-with gr.Blocks() as app:
+with gr.Blocks(theme="Hev832/EasyAndCool", title="RVC") as app:
     gr.Markdown(
         "# <center> Advanced RVC Inference\n"
     )
@@ -933,10 +933,5 @@ with gr.Blocks() as app:
                 fn=download_and_extract_models,
                 inputs=[md_text],
                 outputs=[md_download_logs]
-            )
-    with gr.TabItem("Settings"):
-        gr.Markdown(
-            "# <center> Settings\n"+
-            "#### <center> Work in progress"
         )
     app.queue(concurrency_count=1, max_size=50, api_open=config.api).launch(share=config.colab)
