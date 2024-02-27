@@ -1,4 +1,3 @@
-<div align="center">
 
 # Advanced RVC Inference
 
@@ -18,10 +17,10 @@ Please support the original RVC. This inference won't be possible to make withou
 - Microphone Support ✅
 - TTS Support ✅
 - Model Downloader ✅
-- Batch Inference (Beta) ✅
+- Batch Inference ✅
+- downloading model and rmvpe now with  .py file ✅
 
-#### Currently Working
-- Settings 🛠
+
 
 ### Installation
 
@@ -39,11 +38,7 @@ pip install -r requirements.txt
 
 ### Run WebUI <br />
 
-For Windows:
-```bash
-Open run.bat
-```
-For Other:
+
 ```bash
 python infer.py
 ```
