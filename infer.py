@@ -622,7 +622,7 @@ def change_audio_mode(vc_audio_mode):
         
 with gr.Blocks(theme="Hev832/EasyAndCool", title="RVC") as app:
     gr.Markdown(
-        "# <center> Advanced RVC Inference\n"
+        "# <center> Blane RVC 💻\n"
     )
     with gr.Row():
         sid = gr.Dropdown(
