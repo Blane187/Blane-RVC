@@ -12,6 +12,19 @@ Please support the original RVC. This inference won't be possible to make withou
 
 [Original RVC Repository](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI)
 
+
+### contributor
+
+---------------------------------------------
+
+ [ArkanDash](https://github.com/ArkanDash) original ui coder
+
+---------------------------------------------
+
+[blane187](https://github.com/ArkanDash) WebUI remake
+
+---------------------------------------------
+
 #### Features
 
 - Support V1 & V2 Model ✅
@@ -27,25 +40,3 @@ Please support the original RVC. This inference won't be possible to make withou
 - Model Downloader ✅
 
 
-
-### Installation
-
-1. Install Dependencies <br />
-```
-pip install torch torchvision torchaudio
-```
-pip install -r requirements.txt
-```
-python tools/Download_models.py
-```
-
-
-2. Install [ffmpeg](https://ffmpeg.org/)
-
-
-### Run WebUI <br />
-
-
-```
-python infer.py
-```
