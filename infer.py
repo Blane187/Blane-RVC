@@ -148,6 +148,7 @@ def vc_single(
             hubert_model,
             net_g,
             sid,
+            audio,
             input_audio_path,
             times,
             f0_up_key,
@@ -837,7 +838,86 @@ with gr.Blocks(theme="Hev832/EasyAndCool", title="RVC") as app:
             ]
         )
         sid.change(fn=get_vc, inputs=[sid, protect0], outputs=[spk_item, protect0, file_index, selected_model])
-      
+      with gr.TabItem("Batch Inference"):
+        with gr.Row():
+            with gr.Column():
+                vc_input_bat = gr.Textbox(label="Input audio path (folder)", visible=True)
+                vc_output_bat = gr.Textbox(label="Output audio path (folder)", value="result/batch", visible=True)
+            with gr.Column():
+                vc_transform0_bat = gr.Number(
+                    label="Transpose", 
+                    info='Type "12" to change from male to female convertion or Type "-12" to change female to male convertion.',
+                    value=0
+                )
+                f0method0_bat = gr.Radio(
+                    label="Pitch extraction algorithm",
+                    info=f0method_info,
+                    choices=f0method_mode,
+                    value="pm",
+                    interactive=True,
+                )
+                index_rate0_bat = gr.Slider(
+                    minimum=0,
+                    maximum=1,
+                    label="Retrieval feature ratio",
+                    value=0.7,
+                    interactive=True,
+                )
+                filter_radius0_bat = gr.Slider(
+                    minimum=0,
+                    maximum=7,
+                    label="Apply Median Filtering",
+                    info="The value represents the filter radius and can reduce breathiness.",
+                    value=3,
+                    step=1,
+                    interactive=True,
+                )
+                resample_sr0_bat = gr.Slider(
+                    minimum=0,
+                    maximum=48000,
+                    label="Resample the output audio",
+                    info="Resample the output audio in post-processing to the final sample rate. Set to 0 for no resampling",
+                    value=0,
+                    step=1,
+                    interactive=True,
+                )
+                rms_mix_rate0_bat = gr.Slider(
+                    minimum=0,
+                    maximum=1,
+                    label="Volume Envelope",
+                    info="Use the volume envelope of the input to replace or mix with the volume envelope of the output. The closer the ratio is to 1, the more the output envelope is used",
+                    value=1,
+                    interactive=True,
+                )
+                protect0_bat = gr.Slider(
+                    minimum=0,
+                    maximum=0.5,
+                    label="Voice Protection",
+                    info="Protect voiceless consonants and breath sounds to prevent artifacts such as tearing in electronic music. Set to 0.5 to disable. Decrease the value to increase protection, but it may reduce indexing accuracy",
+                    value=0.5,
+                    step=0.01,
+                    interactive=True,
+                )
+            with gr.Column():
+                vc_log_bat = gr.Textbox(label="Output Information", interactive=False)
+                vc_convert_bat = gr.Button("Convert", variant="primary")
+        vc_convert_bat.click(
+            vc_multi,
+            [
+                spk_item,
+                vc_input_bat,
+                vc_output_bat,
+                vc_transform0_bat,
+                f0method0_bat,
+                file_index,
+                index_rate0_bat,
+                filter_radius0_bat,
+                resample_sr0_bat,
+                rms_mix_rate0_bat,
+                protect0_bat,
+            ],
+            [vc_log_bat],
+        )
     with gr.TabItem("Model Downloader"):
         gr.Markdown(
             "# <center> Model Downloader (Beta)\n"+
