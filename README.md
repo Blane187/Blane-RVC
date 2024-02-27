@@ -1,8 +1,7 @@
 
 # Advanced RVC Inference
-</div>
+
 [![Open In Collab](https://img.shields.io/badge/Open%20In%20Google%20Colab-F9AB00?style=flat-square&logo=googlecolab&logoColor=white)](https://colab.research.google.com/github/Blane187/Advanced-RVC-Inference/blob/master/Advanced_RVC.ipynb)
-</div>
 
 
 ### Information
