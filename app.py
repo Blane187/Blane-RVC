@@ -1,2 +1,2 @@
 import os
-os.system("python webUI.py")
+os.system("python infer.py")
