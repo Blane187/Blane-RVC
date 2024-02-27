@@ -1,10 +1,9 @@
 
 # Advanced RVC Inference
 </div>
-
+[![Open In Collab](https://img.shields.io/badge/Open%20In%20Google%20Colab-F9AB00?style=flat-square&logo=googlecolab&logoColor=white)](https://colab.research.google.com/github/Blane187/Advanced-RVC-Inference/blob/master/Advanced_RVC.ipynb)
 </div>
 
-[!](colab][https://img.shields.io/badge/Colab-Advanced%20RVC%20Inference-blue?style=for-the-badge&logo=googlecolab](https://colab.research.google.com/github/Blane187/Advanced-RVC-Inference/blob/master/Advanced_RVC.ipynb) 
 
 ### Information
 Advanced RVC Inference presents itself as a state-of-the-art web UI crafted to streamline rapid and effortless inference. This comprehensive toolset encompasses a model downloader, a voice splitter, and the added efficiency of batch inference.
