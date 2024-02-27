@@ -148,7 +148,6 @@ def vc_single(
             hubert_model,
             net_g,
             sid,
-            audio,
             input_audio_path,
             times,
             f0_up_key,
