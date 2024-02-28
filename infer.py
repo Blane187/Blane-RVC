@@ -36,7 +36,7 @@ voices = [f"{v['ShortName']}-{v['Gender']}" for v in tts_voice_list]
 
 hubert_model = None
 
-f0method_mode = ["pm", "harvest", "crepe"]
+f0method_mode = ["pm", "harvest", "crepe", "dio"]
 f0method_info = "PM is fast, Harvest is good but extremely slow, and Crepe effect is good but requires GPU (Default: PM)"
 
 if os.path.isfile("rmvpe.pt"):
@@ -620,7 +620,7 @@ def change_audio_mode(vc_audio_mode):
             gr.Dropdown.update(visible=True)
         )
         
-with gr.Blocks() as app:
+with gr.Blocks(theme="Hev832/EasyAndCool", title="Blane") as app:
     gr.Markdown(
         "# <center> Blane RVC 💻 \n"
     )
